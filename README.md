@@ -1,5 +1,7 @@
 # String Art Sculpture
 
+![Example](/assets/example.png "Example")
+
 ## Descripción
 **String Art Sculpture** es un proyecto basado en Python para procesar modelos 3D en formato STL y generar secciones transversales que sirvan como guía para crear esculturas en *string art*. El proyecto incluye scripts para cortar un modelo 3D en imágenes 2D, rellenar los contornos para simular los hilos del *string art*, y visualizar las secciones en un entorno 3D interactivo. Este proyecto es ideal para artistas, diseñadores y entusiastas del *string art* que deseen planificar esculturas tridimensionales basadas en modelos digitales.
 
