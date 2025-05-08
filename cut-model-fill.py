@@ -20,7 +20,7 @@ rotation_matrix = trimesh.transformations.rotation_matrix(
 mesh.apply_transform(rotation_matrix)
 
 # Configura el tamaño de la imagen y los límites de los ejes
-plt.rcParams['figure.figsize'] = [5.12, 5.12]  # Proporción cuadrada para 512x512 píxeles
+plt.rcParams['figure.figsize'] = [15.36,15.36]  # Proporción cuadrada para 512x512 píxeles
 x_limits = (-800, 500)
 y_limits = (-650, 650)
 

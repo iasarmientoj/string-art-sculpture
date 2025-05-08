@@ -8,7 +8,7 @@ mesh = trimesh.load('model/model.stl')
 # Parámetros
 num_sections = 100
 rotation_angle = 45  # Ángulo de rotación en grados alrededor del eje Z (vertical)
-line_width = 2.0    # Ancho del contorno en píxeles (ajusta según necesidad)
+line_width = 15.0    # Ancho del contorno en píxeles (ajusta según necesidad)
 z_min, z_max = mesh.bounds[0][2], mesh.bounds[1][2]
 z_positions = np.linspace(z_min, z_max, num_sections)
 
@@ -21,7 +21,7 @@ rotation_matrix = trimesh.transformations.rotation_matrix(
 mesh.apply_transform(rotation_matrix)
 
 # Configura el tamaño de la imagen y los límites de los ejes
-plt.rcParams['figure.figsize'] = [5.12, 5.12]  # Proporción cuadrada para 512x512 píxeles
+plt.rcParams['figure.figsize'] = [15.36,15.36]  # Proporción cuadrada para 512x512 píxeles
 x_limits = (-800, 500)
 y_limits = (-650, 650)
 
