@@ -34,6 +34,7 @@ glEnable(GL_DEPTH_TEST)  # Enable depth testing
 textures = []
 for i in range(1, num_sections + 1):
     img_path = f'string-sections/seccion_{i}_string_art.png'
+    # img_path = f'sections-export/sseccion_{i}.png'
     if os.path.exists(img_path):
         try:
             surface = pygame.image.load(img_path)

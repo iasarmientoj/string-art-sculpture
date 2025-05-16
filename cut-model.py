@@ -8,7 +8,7 @@ mesh = trimesh.load('model/model.stl')
 # Parámetros
 num_sections = 100
 rotation_angle = 45  # Ángulo de rotación en grados alrededor del eje Z (vertical)
-line_width = 15.0    # Ancho del contorno en píxeles (ajusta según necesidad)
+line_width = 10.0    # Ancho del contorno en píxeles (ajusta según necesidad)
 z_min, z_max = mesh.bounds[0][2], mesh.bounds[1][2]
 z_positions = np.linspace(z_min, z_max, num_sections)
 

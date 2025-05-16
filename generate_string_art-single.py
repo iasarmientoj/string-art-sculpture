@@ -8,10 +8,10 @@ idImage=10
 input_image = f"sections-export/seccion_{idImage}.png"  # Input cross-sectional image
 output_image = f"sections-export/seccion_{idImage}_string_art.png"  # Output string art image
 output_sequence = f"sections-export/seccion_{idImage}_string_art.txt"  # Output sequence file
-points_per_side = 25  # Number of points per side (400 total)
-num_jumps = 400  # Increased number of thread jumps for better detail
-subtract_intensity = 100  # Increased intensity to subtract per thread pass
-min_distance = 50  # Minimum distance (pixels) between points for jumps
+points_per_side = 100  # Number of points per side (400 total)
+num_jumps = 200  # Increased number of thread jumps for better detail
+subtract_intensity = 200  # Increased intensity to subtract per thread pass
+min_distance = 5  # Minimum distance (pixels) between points for jumps
 line_width = 1  # Width of lines in output image
 image_size = 1182  # Image dimensions (512x512 pixels)
 

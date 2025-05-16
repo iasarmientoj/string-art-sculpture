@@ -9,10 +9,10 @@ import re
 input_dir = "sections-export/"  # Input directory for cross-sectional images
 output_dir = "string-sections/"  # Output directory for string art images
 output_sequence = "string_art_sequences.txt"  # Consolidated sequence file
-points_per_side = 25  # Number of points per side (150 total, excluding bottom)
-num_jumps = 400  # Number of thread jumps
-subtract_intensity = 100  # Intensity to subtract per thread pass
-min_distance = 50  # Minimum distance (pixels) between points for jumps
+points_per_side = 100  # Number of points per side (150 total, excluding bottom)
+num_jumps = 200  # Number of thread jumps
+subtract_intensity = 200  # Intensity to subtract per thread pass
+min_distance = 5  # Minimum distance (pixels) between points for jumps
 line_width = 1  # Width of lines in output image
 image_size = 1182  # Image dimensions (1182x1182 pixels)
 
@@ -27,6 +27,9 @@ def generate_points(points_per_side, image_size):
     # Right side (x = image_size, y varies)
     for i in range(points_per_side):
         points.append((image_size - 1, i * step))
+    # Bottom side (x varies, y = image_size)
+    for i in range(points_per_side):
+        points.append(((points_per_side - 1 - i) * step, image_size - 1))
     # Left side (x = 0, y varies)
     for i in range(points_per_side):
         points.append((0, (points_per_side - 1 - i) * step))
