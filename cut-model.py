@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 mesh = trimesh.load('model/model.stl')
 
 # Parámetros
-num_sections = 100
+num_sections = 50 + 2
 rotation_angle = 45  # Ángulo de rotación en grados alrededor del eje Z (vertical)
 line_width = 10.0    # Ancho del contorno en píxeles (ajusta según necesidad)
 z_min, z_max = mesh.bounds[0][2], mesh.bounds[1][2]
@@ -52,5 +52,5 @@ for i, z in enumerate(z_positions):
         plt.ylim(y_limits)
         plt.gca().set_aspect('equal', adjustable='box')
         plt.axis('off')  # Oculta los ejes y el recuadro
-        plt.savefig(f'sections-export/seccion_{i}.png', dpi=100, bbox_inches='tight', pad_inches=0)  # 512x512 píxeles
+        plt.savefig(f'sections-export/seccion_{i:03d}.png', dpi=100, bbox_inches='tight', pad_inches=0)  # 512x512 píxeles
         plt.close()
