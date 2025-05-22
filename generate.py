@@ -8,6 +8,13 @@ from time import time
 import pathlib
 import os
 
+
+# Directorios de entrada y salida
+input_dir = pathlib.Path('sections-export')
+output_dir = pathlib.Path('string-sections')
+instructions_file = 'instructions.txt'
+
+
 def rgb2gray(rgb):
     return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
 
@@ -209,7 +216,7 @@ if __name__ == '__main__':
     # Parámetros fijos
     LONG_SIDE = 300
     SIDE_LEN = 800
-    NAIL_STEP = 6
+    NAIL_STEP = 10
     EXPORT_STRENGTH = 0.18
     RECT = True
     WB = False
@@ -219,10 +226,6 @@ if __name__ == '__main__':
     RADIUS1_MULTIPLIER = 1.0
     RADIUS2_MULTIPLIER = 1.0
 
-    # Directorios de entrada y salida
-    input_dir = pathlib.Path('sections-export')
-    output_dir = pathlib.Path('string-sections')
-
     # Crear la carpeta de salida si no existe
     output_dir.mkdir(exist_ok=True)
 
@@ -230,7 +233,6 @@ if __name__ == '__main__':
     last_nail_idx = 0
 
     # Abrir el archivo de instrucciones
-    instructions_file = 'instructions.txt'
     with open(instructions_file,'a') as f:
         f.write("Instructions:\n\n")
 

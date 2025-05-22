@@ -7,14 +7,11 @@ import os
 import numpy as np
 
 # Parameters
-num_sections = 50  # Number of sections (from seccion_1_string_art.png to seccion_98_string_art.png)
-z_separation = 0.44  # Separation between sections on the Z-axis
-# 48 0.45
-# 50 0.44
-# 68 0.31
-# 98 0.21
-# 148 0.14
-x_limits = (-800, 500)  # X-axis limits (will be scaled)
+folder_name = "string-sections-statue"  # Default folder name
+# folder_name = "sections-export"  # Default folder name
+
+z_separation = 0.5  # Separation between sections on the Z-axis
+x_limits = (-650, 650)  # X-axis limits (will be scaled)
 y_limits = (-650, 650)  # Y-axis limits (will be scaled)
 scale_factor = 100.0  # Scale down the model size
 alpha = 0.9  # Overall opacity of images (1.0 since transparency is handled per pixel)
@@ -34,12 +31,14 @@ glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 glClearColor(1.0, 1.0, 1.0, 1.0)  # Set background to white
 glDisable(GL_CULL_FACE)  # Disable back-face culling to render both sides of quads
 
-# Load textures (seccion_1.png to seccion_48.png) with white background transparent
+# Count the number of PNG files in the folder and load textures
 textures = []
-for i in range(1, num_sections + 1):
-    img_path = f'string-sections/seccion_{i:03d}.png'
-    # img_path = f'sections-export/seccion_{i:03d}.png'
-    if os.path.exists(img_path):
+if os.path.exists(folder_name):
+    # Get list of PNG files in the folder
+    image_files = [f for f in os.listdir(folder_name) if f.endswith('.png')]
+    num_sections = len(image_files)
+    for i, img_file in enumerate(sorted(image_files), 1):  # Sort to ensure consistent order
+        img_path = os.path.join(folder_name, img_file)
         try:
             surface = pygame.image.load(img_path)
             # Convert surface to RGBA array
@@ -64,6 +63,9 @@ for i in range(1, num_sections + 1):
             print(f"Error loading {img_path}: {e}")
     else:
         textures.append(None)
+else:
+    print(f"Folder {folder_name} does not exist.")
+    num_sections = 0
 
 # Variables for interaction
 angle_x, angle_y = -90, 0  # Initial rotation to align Z with screen Y
