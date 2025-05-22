@@ -29,12 +29,19 @@ def largest_square(image: np.ndarray) -> np.ndarray:
 
 def create_rectangle_nail_positions(shape, nail_step=2):
     height, width = shape
-
-    nails_top = [(0, i) for i in range(0, width, nail_step)]
-    nails_bot = [(height-1, i) for i in range(0, width, nail_step)]
-    nails_right = [(i, width-1) for i in range(1, height-1, nail_step)]
-    nails_left = [(i, 0) for i in range(1, height-1, nail_step)]
-    nails = nails_top + nails_right + nails_bot + nails_left
+	
+    offset_top = int(nail_step/2)
+    offset_bot = int(nail_step/2)
+    offset_right = int(nail_step/2)
+    offset_left = int(nail_step/2)
+	
+    expand = int(nail_step/2)
+	
+    nails_top = [(0, i) for i in range(offset_top+expand, width-expand, nail_step)]
+    nails_bot = [(height-1, i) for i in range(offset_bot+expand, width, nail_step)]
+    nails_right = [(i, width-1) for i in range(offset_right-1+expand, height-1-expand, nail_step)]
+    nails_left = [(i, 0) for i in range(offset_left-1+expand, height-1-expand, nail_step)]
+    nails = nails_top + nails_right + list(reversed(nails_bot)) + list(reversed(nails_left))
 
     return np.array(nails)
 
